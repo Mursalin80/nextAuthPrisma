@@ -33,16 +33,19 @@ const Profile = () => {
       <div className="sticky top-0">
         <Navbar />
       </div>
-      <div className="container mx-auto w-9/12 mt-3">
-        <div className="bg-gray-300 border-4 border-cyan-300 p-4  rounded-xl">
-          <div className="flex justify-around bg-gray-400 m-2 p-4 rounded-3xl ">
+      <div className="container mx-auto w-9/12 mt-3 ">
+        <div className="bg-gray-300 border-4 border-cyan-300 p-4  rounded-xl overflow-auto">
+          <div className="flex justify-around bg-gray-400 m-2 p-4 rounded-3xl flex-col lg:flex-row overflow-hidden ">
             <Image
               src={data.user.image}
               width={100}
               height={100}
               className="rounded-3xl"
+              alt={data.user.name}
             />
-            <p className="text-6xl text-yellow-100 ">{data.user.name}</p>
+            <p className="text-xl lg:text-6xl md:text-4xl text-yellow-100 ">
+              {data.user.name}
+            </p>
           </div>
           <pre>{JSON.stringify(data.user, null, 2)}</pre>
         </div>

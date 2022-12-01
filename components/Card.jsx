@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSession } from 'next-auth/react';
-import { DoubleBubble } from 'react-spinner-animated';
+import { HalfMalf } from 'react-spinner-animated';
 
 import 'react-spinner-animated/dist/index.css';
 
@@ -10,7 +10,7 @@ const Card = () => {
   if (status === 'loading') {
     return (
       <div className="bg-gray-200 border-2 border-cyan-200 p-4  rounded-xl">
-        <DoubleBubble
+        <HalfMalf
           text={'Loading...'}
           center={false}
           width={'300px'}

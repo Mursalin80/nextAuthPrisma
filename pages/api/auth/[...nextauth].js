@@ -30,7 +30,13 @@ export default NextAuth({
           where: {
             email: credentials.email,
           },
-          // select: { name: true, id: true, email: true },
+          select: {
+            name: true,
+            id: true,
+            email: true,
+            password: true,
+            username: true,
+          },
         });
 
         if (!user) return null;
@@ -38,7 +44,6 @@ export default NextAuth({
 
         if (!valid) return;
         delete user.password;
-        // console.log({ user });
 
         return user;
       },
@@ -57,12 +62,12 @@ export default NextAuth({
     },
     jwt: async ({ token, user, account, profile, isNewUser }) => {
       if (typeof user !== typeof undefined) token.user = user;
-      console.log({ token });
+
       return token;
     },
     session: async ({ session, user, token }) => {
       token?.user && (session.user = token.user);
-      console.log({ session });
+
       return session;
     },
   },

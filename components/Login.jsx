@@ -3,12 +3,11 @@ import { useRef } from 'react';
 import Image from 'next/image';
 
 const login = ({ csrfToken, providers }) => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   let handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    });
 
     signIn('credentials', {
       email: emailRef.current.value,
@@ -16,8 +15,6 @@ const login = ({ csrfToken, providers }) => {
     });
   };
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8  h-full sm:w-full">
       <div className="w-full max-w-md space-y-8 bg-slate-300 m-2 p-4 rounded-lg ">
@@ -33,12 +30,7 @@ const login = ({ csrfToken, providers }) => {
             Sign in to your account
           </h2>
         </div>
-        <form
-          className="mt-8 space-y-6"
-          // method="post"
-          // action="/api/auth/callback/credentials"
-          onSubmit={(e) => handleSubmit(e)}
-        >
+        <form className="mt-8 space-y-6" onSubmit={(e) => handleSubmit(e)}>
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
