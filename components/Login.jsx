@@ -3,6 +3,19 @@ import { useRef } from 'react';
 import Image from 'next/image';
 
 const login = ({ csrfToken, providers }) => {
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+
+    signIn('credentials', {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+  };
+
   const emailRef = useRef();
   const passwordRef = useRef();
   return (
@@ -22,8 +35,9 @@ const login = ({ csrfToken, providers }) => {
         </div>
         <form
           className="mt-8 space-y-6"
-          method="post"
+          // method="post"
           // action="/api/auth/callback/credentials"
+          onSubmit={(e) => handleSubmit(e)}
         >
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <div className="-space-y-px rounded-md shadow-sm">
@@ -61,15 +75,7 @@ const login = ({ csrfToken, providers }) => {
 
           <div>
             <button
-              // type="submit"
-              onClick={() =>
-                signIn('credentials', {
-                  email: emailRef.current.value,
-                  password: passwordRef.current.value,
-                  redirect: false,
-                  callbackUrl: '/',
-                })
-              }
+              type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Sign in

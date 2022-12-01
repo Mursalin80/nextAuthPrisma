@@ -27,10 +27,10 @@ const signup = ({ csrfToken }) => {
       let res = await fetch('/api/auth/login', options);
       let { user, error } = await res.json();
       if (error) {
-        toast.warn(error);
+        toast.warn(`Error happend while creating new user: ${error}`);
         throw error;
       }
-      toast.info(user.name);
+      toast.info(`Welcome our new client Mr./Mrs. ${user.name}`);
       if (user && error === null) {
         signIn('credentials', {
           email: user.email,

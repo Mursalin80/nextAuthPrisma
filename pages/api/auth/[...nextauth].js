@@ -3,7 +3,6 @@ import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-// import User from '../../../models/User';
 import { verifyPassword } from '../../../lib/auth';
 import prisma from '../../../lib/prisma';
 
@@ -26,6 +25,7 @@ export default NextAuth({
       name: 'Credentials',
       credentials: {},
       async authorize(credentials, req) {
+        console.log({ credentials });
         let user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
@@ -38,6 +38,7 @@ export default NextAuth({
 
         if (!valid) return;
         delete user.password;
+        // console.log({ user });
 
         return user;
       },
