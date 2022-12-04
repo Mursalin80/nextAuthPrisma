@@ -27,7 +27,7 @@ const Signup = ({ csrfToken }) => {
       let res = await fetch('/api/auth/login', options);
       let { user, error } = await res.json();
       if (error) {
-        toast.warn(`Error happend while creating new user: ${error}`);
+        toast.warn(`Signup Error: ${error}`);
         throw error;
       }
       toast.info(`Welcome our new client Mr./Mrs. ${user.name}`);
@@ -38,7 +38,7 @@ const Signup = ({ csrfToken }) => {
         });
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error('Fetch error: ', error.message);
       console.log('Fetch & signin error', error);
     }
   };
