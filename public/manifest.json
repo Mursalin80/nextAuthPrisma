@@ -9,6 +9,12 @@
   "description": "This nextjs app with nextAuth authentication and prisma ORM",
   "icons": [
     {
+      "src": "/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
