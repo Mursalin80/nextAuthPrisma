@@ -23,6 +23,9 @@ const Signup = ({ csrfToken }) => {
       body: JSON.stringify(values),
     };
 
+    console.log({ values });
+    console.log('Stringify:', JSON.stringify(values));
+
     try {
       let res = await fetch('/api/auth/login', options);
       let { user, error } = await res.json();
