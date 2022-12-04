@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
 
-const signup = ({ csrfToken }) => {
+const Signup = ({ csrfToken }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const conformPasswordRef = useRef();
@@ -167,4 +167,4 @@ const signup = ({ csrfToken }) => {
   );
 };
 
-export default signup;
+export default Signup;

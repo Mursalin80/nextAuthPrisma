@@ -2,7 +2,7 @@ import { signIn } from 'next-auth/react';
 import { useRef } from 'react';
 import Image from 'next/image';
 
-const login = ({ csrfToken, providers }) => {
+const Login = ({ csrfToken, providers }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -100,4 +100,4 @@ const login = ({ csrfToken, providers }) => {
   );
 };
 
-export default login;
+export default Login;
